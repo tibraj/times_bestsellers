@@ -1,0 +1,3 @@
+class TimesBestsellers::Novel 
+  
+end

@@ -1,0 +1,3 @@
+class TimesBestsellers::Scraper
+  
+end
