@@ -4,7 +4,7 @@ class TimesBestsellers::Scraper
     doc = Nokogiri::HTML(open("https://www.nytimes.com/books/best-sellers/trade-fiction-paperback/"))
     novels = doc.css("div.css-46u0bd section.css-19a8fbx li.css-13y32ub")
     novels.each do |novel|
-      Novel.new(
+      TimesBestsellers::Novel.new(
         title = novel.css("h3.css-5pe77f").text.strip,
         author = novel.css("p.css-hjukut").text.strip,
         publisher = novel.css("p.css-heg334").text.strip,

@@ -12,7 +12,7 @@ class TimesBestsellers::CLI
   end
 
   def novels
-    @novels = Novel.all
+    @novels = TimesBestsellers::Novel.all
   end
 
   def show_list

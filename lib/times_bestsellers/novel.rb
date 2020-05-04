@@ -19,7 +19,7 @@ class TimesBestsellers::Novel
   
   def self.all 
     if @@all.empty?
-      Scraper.scrape_novels
+      TimesBestsellers::Scraper.scrape_novels
     end
     @@all 
   end
