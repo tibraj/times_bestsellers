@@ -6,8 +6,6 @@ class TimesBestsellers::CLI
     novels
     show_list 
     puts "-----"
-    puts "Which novel would you like to learn more about? (Enter 1-15)"
-    user_choice = gets.strip
     show_info
     puts "-----"
     continue? 
@@ -30,7 +28,7 @@ class TimesBestsellers::CLI
     end 
   end 
   
-  def show_info(input.to_i)
+  def show_info(input)
     puts "-----"
     if valid?(input.to_i) == true 
       puts "Publisher: " + "#{@novels[input.to_i - 1].publisher}"
