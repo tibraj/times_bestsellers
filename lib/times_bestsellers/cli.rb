@@ -6,6 +6,8 @@ class TimesBestsellers::CLI
     novels
     show_list 
     puts "-----"
+    puts "Which novel would you like to learn more about? (Enter 1-15)"
+    user_choice = gets.strip
     show_info
     puts "-----"
     continue? 
@@ -21,15 +23,19 @@ class TimesBestsellers::CLI
       "done"
     end 
   end 
-
-  def show_info
-    puts "Which novel would you like to learn more about? (Enter 1-15)"
-    user_choice = gets.strip
+  
+  def valid?(input)
+    if input.to_i <= 15 && input.to_i > 0
+      true 
+    end 
+  end 
+  
+  def show_info(input.to_i)
     puts "-----"
-    if user_choice.to_i <= 15 && user_choice.to_i > 0
-      puts "Publisher: " + "#{@novels[user_choice.to_i - 1].publisher}"
-      puts @novels[user_choice.to_i - 1].weeks_on_list
-      puts "Synopsis: " + "#{@novels[user_choice.to_i - 1].synopsis}"
+    if valid?(input.to_i) == true 
+      puts "Publisher: " + "#{@novels[input.to_i - 1].publisher}"
+      puts @novels[input.to_i - 1].weeks_on_list
+      puts "Synopsis: " + "#{@novels[input.to_i - 1].synopsis}"
     else
       puts "*Please enter a number between 1 & 15*"
       puts "-----"
