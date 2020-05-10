@@ -3,12 +3,16 @@ class TimesBestsellers::CLI
   def call 
     puts "Welcome! Here is the New York Times' Bestsellers List for Paperback Fiction:"
     puts "-----"
-    novels
-    show_list 
-    puts "-----"
-    show_info
-    puts "-----"
-    continue? 
+    @input = ""
+    until @input.upcase == "EXIT"
+      novels
+      show_list 
+      puts "-----"
+      novel_selection
+      puts "-----"
+      continue? 
+    end
+    goodbye
   end
 
   def novels
@@ -22,19 +26,26 @@ class TimesBestsellers::CLI
     end 
   end 
   
-  def show_info
+  def valid? (input, array)
+    input.to_i <= array.length && input.to_i > 0
+  end 
+  
+  def novel_selection
     puts "Which novel would you like to learn more about? (Enter 1-15)"
-    user_choice = gets.strip
-    puts "-----"
-    if user_choice.to_i <= 15 && user_choice.to_i > 0
-      puts "Publisher: " + "#{@novels[user_choice.to_i - 1].publisher}"
-      puts @novels[user_choice.to_i - 1].weeks_on_list
-      puts "Synopsis: " + "#{@novels[user_choice.to_i - 1].synopsis}"
-    else
+    novel_selected = gets.strip.to_i 
+    if valid?(novel_selected, @novels)
+      show_info(novel_selected)
+      else
       puts "*Please enter a number between 1 & 15*"
       puts "-----"
-      show_info 
+      novel_selection
     end 
+  end 
+    
+  def show_info(novel_selected)
+      puts "Publisher: " + "#{novels[novel_selected.to_i - 1].publisher}"
+      puts novels[novel_selected.to_i - 1].weeks_on_list
+      puts "Synopsis: " + "#{novels[novel_selected.to_i - 1].synopsis}"
   end  
 
   def continue?
@@ -43,13 +54,18 @@ class TimesBestsellers::CLI
     if user_action.upcase == "Y"
       call 
     elsif user_action.upcase == "N"
-      puts "Goodbye"
+      puts "Happy Reading!"
     else
       puts "-----"
       puts "*Please enter Y or N*"
-      puts "-----"
       continue?
     end
   end
+  
+  def goodbye
+    if @input.upcase == "exit"
+      puts "Goodbye!"
+    end 
+  end 
 
 end 
