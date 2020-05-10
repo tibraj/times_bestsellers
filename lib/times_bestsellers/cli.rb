@@ -3,8 +3,6 @@ class TimesBestsellers::CLI
   def call 
     puts "Welcome! Here is the New York Times' Bestsellers List for Paperback Fiction:"
     puts "-----"
-    @input = ""
-    until @input.upcase == "EXIT"
       novels
       show_list 
       puts "-----"
@@ -12,7 +10,6 @@ class TimesBestsellers::CLI
       puts "-----"
       continue? 
     end
-    goodbye
   end
 
   def novels
@@ -32,10 +29,12 @@ class TimesBestsellers::CLI
   
   def novel_selection
     puts "Which novel would you like to learn more about? (Enter 1-15)"
+    puts "-----"
     novel_selected = gets.strip.to_i 
     if valid?(novel_selected, @novels)
       show_info(novel_selected)
-      else
+    else
+      puts "-----"
       puts "*Please enter a number between 1 & 15*"
       puts "-----"
       novel_selection
@@ -43,6 +42,7 @@ class TimesBestsellers::CLI
   end 
     
   def show_info(novel_selected)
+    puts "-----"
       puts "Publisher: " + "#{novels[novel_selected.to_i - 1].publisher}"
       puts novels[novel_selected.to_i - 1].weeks_on_list
       puts "Synopsis: " + "#{novels[novel_selected.to_i - 1].synopsis}"
@@ -54,18 +54,10 @@ class TimesBestsellers::CLI
     if user_action.upcase == "Y"
       call 
     elsif user_action.upcase == "N"
-      puts "Happy Reading!"
+      puts "Goodbye!"
     else
       puts "-----"
       puts "*Please enter Y or N*"
       continue?
     end
   end
-  
-  def goodbye
-    if @input.upcase == "exit"
-      puts "Goodbye!"
-    end 
-  end 
-
-end 
