@@ -1,6 +1,6 @@
 # TimesBestsellers
 
-Find out which novels have made it on the New York Times' Bestsellers list!
+This program allows users to find out which novels have made it on the New York Times' Bestsellers list and learn more information about a specific novel of their interest.
 
 ## Installation
 
