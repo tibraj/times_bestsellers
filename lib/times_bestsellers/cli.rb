@@ -31,7 +31,7 @@ class TimesBestsellers::CLI
       puts @novels[user_choice.to_i - 1].weeks_on_list
       puts "Synopsis: " + "#{@novels[user_choice.to_i - 1].synopsis}"
     else
-      puts "*Please enter a number between 1 & 15*"
+      puts "Invalid Entry. *Please enter a number between 1 & 15*"
       puts "-----"
       show_info 
     end 
