@@ -46,7 +46,7 @@ class TimesBestsellers::CLI
       puts "Goodbye"
     else
       puts "-----"
-      puts "*Please enter Y or N*"
+      puts "Invalid Entry. *Please enter Y or N*"
       puts "-----"
       continue?
     end
